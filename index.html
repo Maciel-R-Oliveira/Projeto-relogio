@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            position: relative;
+            background-color: black;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        div {
+            background-color: brown;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+        }
+
+        h1 {
+            margin: 0;
+            color: white;
+        }
+
+        .re {
+            font-size: 60px;
+            padding: 5px;
+            background-color: blue;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Relogio digital</h1>
+    <div>
+        <h1 class="re">00:00:00</h1>
+    </div>
+
+
+    <script>
+        function horas(){
+            let horas = new Date().getHours()
+            let minutos = new Date().getMinutes()
+            let segundos = new Date().getSeconds()
+            let tela = document.querySelector(".re")
+            let som = document.createElement("audio")
+            som.setAttribute("src", "Relogio.mp3")
+            som.play()
+
+
+
+            horas = horas < 10 ? "0" + horas : horas 
+            minutos = minutos < 10 ? "0" + minutos : minutos 
+            segundos = segundos < 10 ? "0" + segundos : segundos
+
+
+            
+            tela.innerHTML = `${horas}:${minutos}:${segundos}`
+            
+         if (tela.style.fontSize === "60px") {
+              tela.style.fontSize = "70px";
+              tela.style.boxShadow = "-5px 10px 1px white";
+              tela.style.transition = "0.5s";
+          } else{
+                tela.style.fontSize = "60px";
+                tela.style.boxShadow = "0px 0px 0px -1px white";
+                tela.style.transition = "0.5s";
+           }
+
+
+        }
+
+        setInterval(horas, 1000)
+
+        horas()
+    </script>
+</body>
+</html>
