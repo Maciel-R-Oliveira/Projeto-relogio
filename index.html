@@ -3,58 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relógio Digital</title>
+    <title>Relogio Digital</title>
     <link rel="shortcut icon" href="icone.ico" type="image/x-icon">
     <style>
+
         body {
             font-family: Arial, Helvetica, sans-serif;
             background-color: black;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            
         }
-        
-        .esq, .dir {
+
+        div.esq {
             background-color: white;
-            width: 0;
-            height: 100vh;
+            width: 0px;
+            height: 95vh;
+            left: 0;
             margin: 0;
             padding: 0;
-            box-shadow: 0px 1px 100px 50px blue;
-            position: fixed;
-            top: 0;
-        }
-        
-        .esq {
-            left: 0;
             box-shadow: -100px 1px 100px 50px blue;
         }
 
-        .dir {
+        div.dir {
+            position: absolute;
+            top: 0;
+            background-color: white;
+            width: 0px;
+            height: 95vh;
             right: 0;
+            margin: 0;
+            padding: 0;
             box-shadow: 100px 1px 100px 50px blue;
         }
+
 
         h1.relogio {
             font-size: 60px;
             padding: 5px;
             background-color: blue;
             border-radius: 10px;
+
             position: absolute;
             margin: 0;
             color: white;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            border-radius: 10px;
         }
 
         footer {
-            width: 280px;
-            background-color: rgba(38, 11, 102, 0.549);
-            border-radius: 200px 200px 0 0;
             position: absolute;
+            width: 280px;
+            background-color:rgba(38, 11, 102, 0.549);
+            border-radius: 200px 200px 0px 0px;
             left: 50%;
             bottom: 0;
             transform: translateX(-50%);
@@ -67,68 +70,86 @@
             margin: 5px;
             text-align: center;
             letter-spacing: 1px;
+
         }
 
         footer > p > a {
             text-decoration: none;
             color: white;
+
         }
 
         footer > p > a:hover {
             text-decoration: underline;
         }
+
+
     </style>
 </head>
 <body>
-    <div class="esq"></div>
-    <div class="dir"></div>
-    <h1 class="relogio">00:00:00</h1>
-    <footer>
-        <p>
-            Site desenvolvido por: 
-            <a href="https://www.linkedin.com/in/maciel-rodrigues-" target="_blank">Maciel Rodrigues</a>
+
+        <div class="esq"></div>
+        <div class="dir"></div>
+
+
+        <h1 class="relogio">00:00:00</h1>
+
+
+        <footer>
+            <p>
+                Site desenvolvido por: 
+                <a href="https://www.linkedin.com/in/maciel-rodrigues-"target="_blank">Maciel Rodrigues</a>
         </p>
     </footer>
     <script>
-        function horas() {
-            const dir = document.querySelector(".dir");
-            const esq = document.querySelector(".esq");
-            const tela = document.querySelector(".relogio");
-            const som = document.createElement("audio");
-            som.setAttribute("src", "Relogio.mp3");
-            som.play();
+        function horas(){
+            let dir = document.querySelector(".dir")
+            let esq = document.querySelector(".esq")
 
-            const now = new Date();
-            let horas = now.getHours();
-            let minutos = now.getMinutes();
-            let segundos = now.getSeconds();
+            let horas = new Date().getHours()
+            let minutos = new Date().getMinutes()
+            let segundos = new Date().getSeconds()
+            let tela = document.querySelector(".relogio")
+            let som = document.createElement("audio")
+            som.setAttribute("src", "Relogio.mp3")
+            som.play()
 
-            horas = horas < 10 ? "0" + horas : horas;
-            minutos = minutos < 10 ? "0" + minutos : minutos;
-            segundos = segundos < 10 ? "0" + segundos : segundos;
 
-            tela.innerHTML = `${horas}:${minutos}:${segundos}`;
+
+            horas = horas < 10 ? "0" + horas : horas 
+            minutos = minutos < 10 ? "0" + minutos : minutos 
+            segundos = segundos < 10 ? "0" + segundos : segundos
+
+
             
-            if (tela.style.fontSize === "60px") {
-                tela.style.fontSize = "70px";
-                tela.style.background = "red";
-                tela.style.boxShadow = "-5px 10px 1px white";
-                dir.style.opacity = "50%";
-                esq.style.opacity = "50%";
-            } else {
+            tela.innerHTML = `${horas}:${minutos}:${segundos}`
+            
+         if (tela.style.fontSize === "60px") {
+              tela.style.fontSize = "70px";
+              tela.style.background = "red"
+              tela.style.boxShadow = "-5px 10px 1px white";
+              dir.style.opacity = "50%"
+              esq.style.opacity = "50%"
+              tela.style.transition = "0.5s";
+              dir.style.transition = "0.5s";
+              esq.style.transition = "0.5s";
+          } else{
                 tela.style.fontSize = "60px";
-                tela.style.background = "blue";
+                tela.style.background = "blue"
                 tela.style.boxShadow = "0px 0px 0px -1px white";
-                dir.style.opacity = "100%";
-                esq.style.opacity = "100%";
-            }
-            tela.style.transition = "0.5s";
-            dir.style.transition = "0.5s";
-            esq.style.transition = "0.5s";
+                dir.style.opacity = "100%"
+                esq.style.opacity = "100%"
+                dir.style.transition = "0.5s";
+                esq.style.transition = "0.5s";
+                tela.style.transition = "0.5s";
+           }
+
+
         }
 
-        setInterval(horas, 1000);
-        horas();
+        setInterval(horas, 1000)
+
+        horas()
     </script>
 </body>
 </html>
