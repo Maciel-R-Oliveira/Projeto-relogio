@@ -49,10 +49,37 @@
             position: absolute;
             margin: 0;
             color: white;
-            top: 50%;
+            top: 35%;
             left: 50%;
             transform: translate(-50%, -50%);
             border-radius: 10px;
+        }
+
+        .dia {
+            color: white;
+            width: 280px;
+            font-size: 40px;
+            text-align: center;
+            padding-top: 25px;
+
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+
+        .linha {
+            position: absolute;
+            border: 2px solid white;
+            border-radius: 14px;
+            width: 280px;
+            height: 230px;
+
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+
         }
 
         footer {
@@ -95,7 +122,11 @@
         <div class="dir"></div>
 
 
-        <h1 class="relogio">00:00:00</h1>
+
+        <div class="linha">
+            <h1 class="relogio">00:00:00</h1>
+            <h2 class="dia">20/07/1990</h2>
+        </div>
 
 
         <footer>
@@ -106,9 +137,7 @@
     </footer>
     <script>
         function horas(){
-            let dir = document.querySelector(".dir")
-            let esq = document.querySelector(".esq")
-
+            // Horas
             let horas = new Date().getHours()
             let minutos = new Date().getMinutes()
             let segundos = new Date().getSeconds()
@@ -117,35 +146,11 @@
             som.setAttribute("src", "Relogio.mp3")
             som.play()
 
-
-
             horas = horas < 10 ? "0" + horas : horas 
             minutos = minutos < 10 ? "0" + minutos : minutos 
             segundos = segundos < 10 ? "0" + segundos : segundos
-
-
             
             tela.innerHTML = `${horas}:${minutos}:${segundos}`
-            
-         if (tela.style.fontSize === "60px") {
-              tela.style.fontSize = "70px";
-              tela.style.background = "red"
-              tela.style.boxShadow = "-5px 10px 1px white";
-              dir.style.opacity = "50%"
-              esq.style.opacity = "50%"
-              tela.style.transition = "0.5s";
-              dir.style.transition = "0.5s";
-              esq.style.transition = "0.5s";
-          } else{
-                tela.style.fontSize = "60px";
-                tela.style.background = "blue"
-                tela.style.boxShadow = "0px 0px 0px -1px white";
-                dir.style.opacity = "100%"
-                esq.style.opacity = "100%"
-                dir.style.transition = "0.5s";
-                esq.style.transition = "0.5s";
-                tela.style.transition = "0.5s";
-           }
 
 
         }
