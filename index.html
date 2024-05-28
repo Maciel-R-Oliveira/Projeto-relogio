@@ -13,8 +13,11 @@
             height: 100vh;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
             
+        }
+
+        body::-webkit-scrollbar {
+            content: none;
         }
 
         div.esq {
@@ -56,14 +59,11 @@
         }
 
         footer {
-            position: absolute;
             width: 280px;
             background-color:rgba(38, 11, 102, 0.549);
-            bottom: 0;
-            margin: auto;
-            left: 50%;
-            transform: translate(-50%);
             border-radius: 200px 200px 0px 0px;
+            margin: auto;
+            bottom: 0;
 
         }
 
@@ -73,6 +73,7 @@
             margin: 5px;
             text-align: center;
             letter-spacing: 1px;
+            padding: 5px;
 
         }
 
