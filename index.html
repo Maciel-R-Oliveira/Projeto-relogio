@@ -154,12 +154,14 @@
 
             if(relogio.style.backgroundColor == "purple") {
                 relogio.style.backgroundColor = "blue"
-                relogio.style.transition = "5s"
-                
+                relogio.style.transition = "3s"
+            } else if(relogio.style.backgroundColor == "blue"){
+                relogio.style.backgroundColor = "red"
+                relogio.style.transition = "3s"
 
-            } else if(relogio.style.backgroundColor == "blue" || relogio.style.backgroundColor == ""){
+            } else if(relogio.style.backgroundColor == "red" || relogio.style.backgroundColor == ""){
                 relogio.style.backgroundColor = "purple"
-                relogio.style.transition = "5s"
+                relogio.style.transition = "3s"
 
             }
         }
