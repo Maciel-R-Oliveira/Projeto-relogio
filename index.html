@@ -137,7 +137,7 @@
     </footer>
     <script>
         function horas(){
-            // Horas
+            // HORAS
             let horas = new Date().getHours()
             let minutos = new Date().getMinutes()
             let segundos = new Date().getSeconds()
@@ -151,13 +151,26 @@
             segundos = segundos < 10 ? "0" + segundos : segundos
             
             tela.innerHTML = `${horas}:${minutos}:${segundos}`
+        }
 
+        function data(){
+            // DATA
+            let dia = new Date().getDate()
+            let mes = new Date().getMonth() + 1
+            let ano = new Date().getFullYear()
+            let geral = document.querySelector(".dia")
 
+            dia = dia < 10 ? "0" + dia : dia;
+            mes = mes < 10 ? "0" + mes : mes;
+
+            geral.innerHTML = `${dia}/${mes}/${ano}`
         }
 
         setInterval(horas, 1000)
+        setInterval(data, 24 * 60 * 60 * 1000)
 
         horas()
+        data()
     </script>
 </body>
 </html>
