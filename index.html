@@ -143,9 +143,6 @@
             let minutos = new Date().getMinutes()
             let segundos = new Date().getSeconds()
             let relogio = document.querySelector(".relogio")
-            let som = document.createElement("audio")
-            som.setAttribute("src", "Relogio.mp3")
-            som.play()
 
             horas = horas < 10 ? "0" + horas : horas 
             minutos = minutos < 10 ? "0" + minutos : minutos 
